@@ -8,8 +8,14 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  pageLinks:string[]=['Home','Tenants','Complaint Solvers'];
   constructor(private router:Router, private loginservice:LoginServiceService){
     this.loginservice.checkLoginSession();
+  }
+  redirectTo(i:string)
+  {
+    if(i==this.pageLinks[0])
+    this.router.navigate(['dashboard']);
   }
 LogOut()
 {

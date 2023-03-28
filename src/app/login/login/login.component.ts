@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { Login } from 'src/app/model/login';
 import { userType } from 'src/app/model/UserType';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,6 +12,8 @@ import { userType } from 'src/app/model/UserType';
 })
 export class LoginComponent {
   userType:userType={id:0,Type:''};
+  correctDetails:boolean=true;
+  errorMessage='';
   login:Login={
     id:0,
     username:'',
@@ -30,7 +33,14 @@ SaveLogInDetails()
       sessionStorage.setItem('username',this.login.username);
       sessionStorage.setItem('type',this.login.userType.Type.toLowerCase());
       this.router.navigate([`${this.login.userType.Type.toString().toLowerCase()}`,'dashboard']);
-      
+    },
+    error:(res)=>
+    {
+      if(res.status===404)
+      {
+        this.correctDetails=false;
+        this.errorMessage='invalid username or password';
+      }
     }
   });
 }
