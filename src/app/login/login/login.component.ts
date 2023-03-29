@@ -32,7 +32,7 @@ SaveLogInDetails()
     next:(resp)=>{
       sessionStorage.setItem('username',this.login.username);
       sessionStorage.setItem('type',this.login.userType.Type.toLowerCase());
-      this.router.navigate([`${this.login.userType.Type.toString().toLowerCase()}`,'dashboard']);
+      this.router.navigate([`${this.login.userType.Type.toString().toLowerCase()}`,'dashboard','Home']);
     },
     error:(res)=>
     {

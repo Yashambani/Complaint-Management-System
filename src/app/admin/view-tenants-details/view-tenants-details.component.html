@@ -1,0 +1,25 @@
+<div class="container mx-auto col-10 col-md-8 col-lg-15 ">
+    <h1 class="text-center pb-3 pt-3">Tenants Details</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Unit Number</th>
+        <th scope="col">Email</th>
+        <th scope="col">Contact Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of tenantDetail">
+        <td>{{x.firstName}}</td>
+        <td>{{x.lastName}}</td>
+        <td>{{x.gender}}</td>
+        <td>{{x.units.unitNumber}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.contactNumber}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

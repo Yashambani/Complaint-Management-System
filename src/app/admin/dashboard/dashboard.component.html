@@ -7,23 +7,26 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <div *ngFor="let i of pageLinks">
+              <ng-container *ngIf="i=='Tenants'; then dropDownlinks else simpleLink"></ng-container>
+              <ng-template #dropDownlinks>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{i}}
+                  </a>
+                  <ul class="dropdown-menu bg-dark">
+                    <li><a class="nav-link  text-white" routerLink="AddTenant">New Tenant</a></li>
+                    <li><a class="nav-link  text-white" routerLink="ViewTenants">View Tenant Details</a></li>
+                    <!-- <li><hr class="dropdown-divider"></li>
+                    <li><a class="nav-link  text-white" href="#">Something else here</a></li> -->
+                  </ul>
+                </li>
+              </ng-template>
+              <ng-template #simpleLink>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="{{i}}" name="{{i}}">{{i}}</a>
+            <a class="nav-link active" aria-current="page" role="button" routerLink="{{i}}" name="{{i}}">{{i}}</a>
           </li>
+        </ng-template>
         </div>
-         
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu bg-dark">
-              <li><a class="nav-link  text-white" href="#">Action</a></li>
-              <li><a class="nav-link  text-white" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="nav-link  text-white" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
-        
         </ul>
             <ul class="navbar-nav">  <li class="nav-item pe-45 float-right">
                 <app-logout></app-logout>
@@ -35,3 +38,4 @@
       </div>
     </div>
   </nav>
+  <router-outlet></router-outlet>
