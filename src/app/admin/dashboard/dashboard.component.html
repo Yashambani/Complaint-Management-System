@@ -10,12 +10,12 @@
               <ng-container *ngIf="i=='Tenants'; then dropDownlinks else simpleLink"></ng-container>
               <ng-template #dropDownlinks>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle text-white dashboard-links" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{i}}
                   </a>
                   <ul class="dropdown-menu bg-dark">
-                    <li><a class="nav-link  text-white" routerLink="AddTenant">New Tenant</a></li>
-                    <li><a class="nav-link  text-white" routerLink="ViewTenants">View Tenant Details</a></li>
+                    <li><a class="nav-link dashboard-links  text-white" routerLink="AddTenant">New Tenant</a></li>
+                    <li><a class="nav-link dashboard-links text-white" routerLink="ViewTenants">View Tenant Details</a></li>
                     <!-- <li><hr class="dropdown-divider"></li>
                     <li><a class="nav-link  text-white" href="#">Something else here</a></li> -->
                   </ul>
@@ -23,7 +23,7 @@
               </ng-template>
               <ng-template #simpleLink>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" role="button" routerLink="{{i}}" name="{{i}}">{{i}}</a>
+            <a class="nav-link dashboard-links active" aria-current="page" role="button" routerLink="{{i}}" name="{{i}}">{{i}}</a>
           </li>
         </ng-template>
         </div>

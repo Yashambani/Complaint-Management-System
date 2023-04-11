@@ -20,7 +20,7 @@
       </div>
       <div class="form-outline mb-4">
         <label class="form-label"   >Unit Number</label>
-        <select class="form-select" name='unitNumber' required #unitNumber="ngModel" [(ngModel)]="tenantDetail.units.unitNumber" aria-label="Default select example">
+        <select class="form-select" name='unitNumber' required #unitNumber="ngModel" [(ngModel)]="tenantDetail.unitNumber" aria-label="Default select example">
             <option *ngFor="let x of unit" [ngValue]="x.unitNumber" >{{x.unitNumber}}</option>
           </select>
         <p  *ngIf="unitNumber.invalid && unitNumber.touched" class="text-danger float-right ">Please Enter Valid unitNumber</p>
@@ -32,8 +32,9 @@
       </div>
       <div class="form-outline mb-4">
         <label class="form-label"   >Contact Number</label>
-        <input type="number" required #contactNumber="ngModel" class="form-control" [(ngModel)]="tenantDetail.contactNumber" name="contactNumber"  />
-        <p *ngIf="contactNumber.invalid && contactNumber.touched"  class="text-danger float-right ">Please Enter Valid Contact Number</p>
+        <input type="number" required #contactNumber="ngModel" class="form-control" min='999999999' max='9999999999' [(ngModel)]="tenantDetail.contactNumber" name="contactNumber"  />
+        <p *ngIf="contactNumber.errors?.['required'] && contactNumber.touched"  class="text-danger float-right ">Please Enter Valid Contact Number</p>
+        <p *ngIf="(contactNumber.errors?.['min'] || contactNumber.errors?.['max']) && contactNumber.touched"  class="text-danger float-right ">Number Should be in 10 Digits</p>
       </div> <label class="form-label">Gender</label>
       <div class="form-outline mb-4">
        

@@ -13,10 +13,18 @@ export class TenantServiceService {
     constructor(private router:Router,private http:HttpClient) { }
     SaveTenatsDetails(tenant:tenantDetails):Observable<tenantDetails>
     {
-     return this.http.post<tenantDetails>(`${this.apiURL}/Admin/addTenants`,tenant);
+     return this.http.post<tenantDetails>(`${this.apiURL}/Tenant/addTenants`,tenant);
     }
-    GetTenatsDetails():Observable<tenantDetails[]>
+    GetAllTenatsDetails():Observable<tenantDetails[]>
     {
-        return this.http.get<tenantDetails[]>(`${this.apiURL}/Admin/viewTenants`);
+        return this.http.get<tenantDetails[]>(`${this.apiURL}/Tenant/viewTenants`);
+    }
+    GetTenatDetails(id:string):Observable<tenantDetails[]>
+    {
+        return this.http.get<tenantDetails[]>(`${this.apiURL}/Tenant/viewTenant/${id}`);
+    }
+    EditTenatsDetails(tenant:tenantDetails):Observable<tenantDetails>
+    {
+     return this.http.put<tenantDetails>(`${this.apiURL}/Tenant/updateTenant`,tenant);
     }
 }

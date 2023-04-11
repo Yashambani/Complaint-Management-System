@@ -4,8 +4,8 @@ export interface tenantDetails{
     id:number,
     firstName:string,
     lastName:string,
-    contactNumber:number | string,
+    contactNumber:string,
     email:string,
     gender:string,
-    units:unitDetails
+    unitNumber:number
 }

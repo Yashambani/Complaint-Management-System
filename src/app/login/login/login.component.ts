@@ -15,10 +15,9 @@ export class LoginComponent {
   correctDetails:boolean=true;
   errorMessage='';
   login:Login={
-    id:0,
     username:'',
     password:'',
-    userType:this.userType
+    type:''
   };
   constructor(private router:Router,private logInService:LoginServiceService){
     if(sessionStorage.getItem('username'))
@@ -30,9 +29,10 @@ SaveLogInDetails()
 {
   this.logInService.checkLogInDetails(this.login).subscribe({
     next:(resp)=>{
+      if(resp)
       sessionStorage.setItem('username',this.login.username);
-      sessionStorage.setItem('type',this.login.userType.Type.toLowerCase());
-      this.router.navigate([`${this.login.userType.Type.toString().toLowerCase()}`,'dashboard','Home']);
+      sessionStorage.setItem('type',this.login.type.toLowerCase());
+      this.router.navigate([`${this.login.type.toString().toLowerCase()}`,'dashboard','Home']);
     },
     error:(res)=>
     {

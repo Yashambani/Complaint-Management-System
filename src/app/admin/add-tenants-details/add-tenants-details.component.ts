@@ -18,7 +18,7 @@ tenantDetail:tenantDetails={
   email:'',
   gender:'',
   contactNumber:'',
-  units:{id:0,unitNumber:0}
+  unitNumber:0
 };
 unit:unitDetails[]=[];
 formTextFields:string[]=['FirstName','LastName','PhoneNumber','Email'];

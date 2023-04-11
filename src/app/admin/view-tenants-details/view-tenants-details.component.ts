@@ -11,10 +11,14 @@ export class ViewTenantsDetailsComponent implements OnInit{
   tenantDetail:tenantDetails[]=[]
   constructor(private tenantSerivce:TenantServiceService){}
   ngOnInit(): void {
-   this.tenantSerivce.GetTenatsDetails().subscribe({
+   this.tenantSerivce.GetAllTenatsDetails().subscribe({
     next:(res)=>{
       this.tenantDetail=res;
     }
    });
+  }
+  SaveId(id:number)
+  {
+    sessionStorage.setItem('id',id.toString());
   }
 }
