@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,Validators } from '@angular/forms';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { tenantDetails } from 'src/app/model/TenantDetails';
 import { unitDetails } from 'src/app/model/UnitDetails';
 import { userType } from 'src/app/model/UserType';
@@ -39,7 +39,8 @@ export class EditTenantsDetailsComponent implements OnInit {
   constructor(
     private tenantSerivce: TenantServiceService,
     private unitService: UnitService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) {
     this.unitService.GetUnitDetails().subscribe({
       next: (res) => {
@@ -54,10 +55,13 @@ export class EditTenantsDetailsComponent implements OnInit {
         next: (res) => {
           this.tenantDetail = res[0];
           this.UpdateFormControlValues();
+          sessionStorage.removeItem('id');
         },
       });
     }
-    sessionStorage.removeItem('id');
+    else{
+      this.router.navigate(['admin','dashboard','ViewTenants']);
+    }
   }
   EditTenantsDetails() {
    
@@ -67,6 +71,15 @@ export class EditTenantsDetailsComponent implements OnInit {
         alert('Tenant Updated Successfully');
       },
     });
+  }
+  Delete()
+  {
+    this.tenantSerivce.DeleteTenatsDetails(this.tenantDetail.id.toString()).subscribe({
+      next:(res)=>{
+        alert('Tenant Deleted Successfully');
+        this.router.navigate(['admin/dashboard/ViewTenants']);
+      }
+    })
   }
   UpdateTenantDetails()
   {if(this.firstName.value)

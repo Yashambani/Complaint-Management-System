@@ -9,8 +9,8 @@
         <th scope="col">Unit Number</th>
         <th scope="col">Email</th>
         <th scope="col">Contact Number</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
+        <th scope="col">Action</th>
+       
       </tr>
     </thead>
     <tbody>
@@ -21,8 +21,8 @@
         <td>{{x.unitNumber}}</td>
         <td>{{x.email}}</td>
         <td>{{x.contactNumber}}</td>
-        <td><a class="text-success nav-link" role="button" (click)="SaveId(x.id)" [routerLink]="['../EditTenant']">Edit</a></td>
-        <td><a class="text-danger nav-link" role="button">Delete</a></td>
+        <td><a class="text-success nav-link" role="button" (click)="SaveId(x.id)" [routerLink]="['../EditTenant']">View</a></td>
+       
       </tr>
     </tbody>
   </table>

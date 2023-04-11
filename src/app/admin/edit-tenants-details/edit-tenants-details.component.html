@@ -52,10 +52,13 @@
           </div>
           <p *ngIf="gender.invalid && gender.touched"  class="text-danger float-right ">Please Select Gender</p>
 </div>
-      <div class="text-center">
-        <button type="submit" [disabled]="editForm.invalid"  class="btn btn-primary btn-block mb-4 col-lg-5">
+      <div>
+        <button type="submit" [disabled]="editForm.invalid"  class="btn btn-primary btn-block mb-4 me-2 col-lg-3">
           Update
         </button>
+        <button type="button" (click)="Delete()"  class="btn btn-danger btn-block mb-4 col-lg-3">
+            Delete
+          </button>
       </div>
     </form>
   </div>

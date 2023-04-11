@@ -27,4 +27,8 @@ export class TenantServiceService {
     {
      return this.http.put<tenantDetails>(`${this.apiURL}/Tenant/updateTenant`,tenant);
     }
+    DeleteTenatsDetails(id:string):Observable<string>
+    {
+     return this.http.delete<string>(`${this.apiURL}/Tenant/deleteTenant/${id}`);
+    }
 }
